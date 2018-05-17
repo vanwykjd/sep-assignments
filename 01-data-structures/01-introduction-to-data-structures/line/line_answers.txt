@@ -1,0 +1,39 @@
+LINE ANSWERS
+
+How does your data structure allow developers to access and manipulate the data?
+  
+  A new line can be created by explicitly calling Line::new and assigning it a variable name.
+    >>  new_line = Line.new
+  
+  A new person can be added to a line object by calling [line_name]#join with one argument (person). 
+  [line_name] being the name of the targeted line object, and [person] being the element to be added.
+    >>  line_name.join("person_name")
+  
+  A person can be removed from a line object by calling [line_name]#leave with one argument (person).
+  [line_name] being the name of the targeted line object, and [person] being the element to be removed.
+    >>  line_name.leave("person_name")
+
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  To return the value of the first person/element within a line object, call [line_name]#front.
+  [line_name] being the name of the targeted line object.
+    >>  line.name.front
+    
+  To return the value of the middle person/element within a line object, call [line_name]#middle.
+  [line_name] being the name of the targeted line object.
+    >>  line.name.middle
+  
+  To return the value of the last person/element within a line object, call [line_name]#back.
+  [line_name] being the name of the targeted line object.
+    >>  line_name.back
+  
+  To check whether a line object contains a specific person/element, call [line_name]#search with one argument (person).
+  [line_name] being the name of the targeted line object, and [person] being the person/element wanting to be retrieved.
+    >>  line_name.search("person_name")
+
+What other real-world data can each structure represent?
+
+  - process in OS
+  - Packet transmission
+  - any FIFO order service
+  - status of jobs to be executed

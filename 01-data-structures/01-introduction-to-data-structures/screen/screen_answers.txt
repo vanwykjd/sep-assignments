@@ -1,0 +1,34 @@
+SCREEN ANSWERS
+
+How does your data structure allow developers to access and manipulate the data?
+  
+  A new screen can be created by explicitly calling Screen::new with two arguments (width, height).
+  This creates a matrix with [height] amount of rows, each containing [width] amount of objects.
+    >>  new_screen = Screen.new( int_width, int_height )
+  
+  A new pixel can be created by explicitly calling Pixel::new with five arguments (red, green, blue, x, y).
+  This creates an object consisting of instance variables that hold the pixel color values: [red], [green], [blue], along with
+  the pixel coordinate location: [x], [y].
+    >>  new_pixel = Pixel.new( int_red, int_green, int_blue, int_x, int_y )
+  
+  A pixel can be inserted into a screen by calling [screen_name]#insert with three arguments (pixel, x, y).
+  [screen_name] being the name of the targeted screen object, [pixel] being a name of the pixel object to be inserted, 
+  and [x] and [y] being the coordinates where [pixel] is to be positioned.
+    >>  screen_name.insert( pixel_name, int_x, int_y )
+  
+If a developer wanted to find a specific element in your data structure, how would you search for it?
+  
+  To return the value of a specific location within a screen, call [screen_name]#at with two arguments (x, y).
+  [screen_name] being the name of the targeted screen object, and [x] and [y] being the x and y coordinates of the value wanting to be retrieved.
+    >>  screen_name.at(int_x, int_y)
+    
+  To return the value of a specific instance variable within a pixel object, call [pixel_name]#[instance_variable_name].
+  [pixel_name] being the local variable that has been assigned to a pixel object, and [instance_variable_name] being the name
+  of the instance variable (red, green, blue, x, y) that is holding the value wanting to be retrieved.
+    >>  pixel_name.red / pixel_name.green / pixel_name.blue...
+  
+What other real-world data can each structure represent?
+
+  - database tables
+  - encryption
+  - mapping
