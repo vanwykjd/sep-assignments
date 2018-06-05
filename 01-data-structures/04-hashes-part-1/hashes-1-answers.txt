@@ -1,0 +1,3 @@
+Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+    Doubling the size of the underlying array may lead to an inefficient use of memory by having an increased number of open slots for potential key values. Not only may this method potentially lead to more fragmentation, but creating a new array with a length divisible by 2 may also lead to more collisions since the new keys will be even  multiple of the previous hashing keys.
