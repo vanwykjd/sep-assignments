@@ -1,0 +1,33 @@
+Describe three collision resolution strategies not mentioned here:
+
+  Robin Hood hashing:
+  
+    A variation of double-hashing that utilizes the process of swapping an existing entry with a new entry, if the probe count for the existing entry is less than
+    the probe count for the entry to be inserted. By doing this, the elements that were placed in their slots due to the early stages of a table, will gradually be 
+    pushed away from their preferred slot if new elements that will make better use of that slot are added.
+  
+  Coalesced hashing:
+  
+    A mixture of separate chaining and open addressing that links chains of nodes to one another that are within the table itself. Instead of assigning new entries for the
+    linked list, buckets whithin the table itself are used. When a collision occurs, an item is placed in a "collision" bucket, and a link is made between the chain and the collision bucket.
+    At the time of a collision, the first empty bucket in the table at that moment will be assigned as the collisino bucket.
+    
+  Hopscotch hashing:
+  
+    A combination of the cuckoo hashing and linear probing approaches. The algorithm utilizes a single array of buckets,
+    and only place an item within a bucket if it is within a close proximity to the original hashed bucket. To do this, the algorithm looks
+    where the item is originally supposed to be placed; if the original entry is already occupied, it uses a linear probe to find the next empty entry; 
+    if an empty entry is returned and it is not within a given number of indices to the original entry, the algorithm will then look to see if there are 
+    any existing entries that are between the original hashed entry and within the given number of indices to the empty slot;
+    if an existing entry meets these requirements, the existing entry is then swapped with the empty slot, moving the empty slot closer to the original hashed entry.
+    This process continues until there is an empty slot available within the given number of indices of the original hashed entry. If the algorithm is unable
+    to find an entry capable of doing so, it will resize the table.
+    
+  
+
+Create your own collision resolution strategy and describe how it works:
+
+  Utilize two different hash functions, like 2-choice hashing employs, and implement them within a combination of a Robin Hood hashing and a Hopscotch-like algorithm. The algorithm would first create the
+  two potential entry locations, if the primary entry location is already occupied, the two entries will be assessed by which has a greater probe length, the entry with the lesser probe length will then 
+  be attempted to be inserted at the secondary location of original new entry. If the secondary slot is also occupied, the algorithm will access once again which entry has the greater probe length.
+  The entry containing the lesser probe length will then be processed through a Hopscotch-like hashing function.
