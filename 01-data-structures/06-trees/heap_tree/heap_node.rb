@@ -1,4 +1,4 @@
-class Node
+class HeapNode
   attr_accessor :title
   attr_accessor :rating
   attr_accessor :left
@@ -7,7 +7,7 @@ class Node
   def initialize(title, rating)
     @title = title
     @rating = rating
-    @right = nil
     @left = nil
+    @right = nil
   end
 end

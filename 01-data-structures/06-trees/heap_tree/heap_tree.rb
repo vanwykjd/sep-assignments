@@ -1,4 +1,4 @@
-require_relative 'node'
+require_relative 'heap_node'
 
 class MinHeap
 
@@ -22,6 +22,7 @@ class MinHeap
         swap(data, root)
       end
       assign_children
+      @root = @node_list[1]
     end
   end
 
@@ -56,20 +57,22 @@ class MinHeap
     else
       return nil
     end
+    
   end
-
   # Recursive Breadth First Search
   def printf(children=nil)
-    node = @root
-    return nil if node.nil? 
-    i = 1
-    while i <= @node_list.length - 1
-      node = @node_list[i]
+    @node_list.each { |node|
+      if node == nil
+        next
+      end
       p "#{node.title}: #{node.rating}"
-      i += 1
-    end
-   
+    }
   end
+  
+  def node_list
+    return @node_list
+  end
+  
 
   private
 
@@ -83,16 +86,18 @@ class MinHeap
 
   def assign_children
     i = 1
-    left = i * 2
-    right = (i * 2) + 1
-    while right <= @node_list.length 
-      left = i * 2
-      right = (i * 2) + 1
+    left_index = (i * 2)
+    right_index = (i * 2) + 1
+    while right_index <= @node_list.length 
+      left_index = i * 2
+      right_index = (i * 2) + 1
       temp = @node_list[i]
-      temp.left = @node_list[left]
-      temp.right = @node_list[right]
+      temp.left = @node_list[left_index]
+      temp.right = @node_list[right_index]
       i += 1
     end
     @root = @node_list[1]
   end
+  
+  
 end
