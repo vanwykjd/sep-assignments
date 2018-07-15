@@ -1,0 +1,30 @@
+Calculating a tip:
+
+1: Find the sub-total cost given on the bill
+2: Round up to the next whole dollar amount 
+3: Multiply that number by 2
+4: Move the decimal point one place to the left
+5: Add that number to the total given on the bill
+
+Determine what to wear:
+
+1: Check the weather forecast during the time of event or activity
+2: Determine if the event or activity will be indoors or outdoors
+3: Evaluate the formality the of event or activity
+4: Select one article of clothing that you desire to wear most and conforms to the previous assessments
+5: Use the selected article of clothing as a reference to find a corresponding/counterpart article of clothing 
+6: Select a pair of shoes that conform to the event or activity and complement the articles of clothing selected
+
+Getting to work:
+
+1: The night before: determine the time you want to arrive at work
+2: Assess the amount of time it will take for you to commute to work including traffic/parking/walking 
+3: Subtract the amount of time to commute from the time you want to arrive to determine the time you need to leave
+4: Assess the amount of time will take you to get dressed/eat breakfast/prepare for the day
+5: Subtract that time from the time you need to leave to determine the time you need to wake up
+6: Set an alarm for the time evaluated for you to wake up
+7: Get some sleep
+8: The day of: Wake up to alarm previously set at evaluated time
+9: Get dressed/eat breakfast/prepare for the day in the amount of time assessed the night before
+10: Begin commute at the time to leave determined the night before
+11: Continue commute until arrived at work
