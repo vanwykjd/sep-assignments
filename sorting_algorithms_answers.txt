@@ -1,0 +1,20 @@
+Looking at the bar chart, speculate on why you think some sort algorithms are faster than others and provide rationale as to your thought process.
+
+    Algorithms that place items to their final location one at a time, such as insertion sort, tend have poor performance compared to other algorithms.
+    Algorithms that use a "divide and conquer" approach using recursion, such as quicksort and merge sort, tend to be more consistant and have better performance.
+    
+    Algorithm sorting time complexities:
+    
+            Quicksort:        Best: Ω(n log(n)) - Average: Θ(n log(n)) - Worst: O(n^2)
+
+            Merge sort:       Best: Ω(n log(n)) - Average: Θ(n log(n)) - Worst: O(n log(n))
+
+            Heap sort:        Best: Ω(n log(n)) - Average: Θ(n log(n)) - Worst: O(n log(n))
+
+            Bubble sort:      Best: Ω(n)        - Average: Θ(n^2)      - Worst: O(n^2)
+
+            Selection sort:   Best: Ω(n^2)      - Average: Θ(n^2)      - Worst: O(n^2)
+
+            Bucket sort:      Best: Ω(n+k)      - Average: Θ(n+k)      - Worst: O(n^2)
+
+            Insertsion sort:  Best: Ω(n)        - Average: Θ(n^2)      - Worst: O(n^2)
