@@ -1,3 +1,4 @@
+
 require_relative 'node'
 
 class BaconGraph
@@ -5,6 +6,7 @@ class BaconGraph
   
   def initialize
     @actor_list = []
+    @film_list = []
   end
 
   
@@ -18,19 +20,12 @@ class BaconGraph
     @actor_list << actor
     
     add_related_cast(actor)
-    @actor_list.sort_by!(&:degree_to_bacon)
   end
 
   
   def find_kevin_bacon(actor)
-    actor_path = []
 
     set_degree_of_bacon
-
-    if actor.degree_to_bacon > 6 
-      puts "Cannot find connection within 6 degrees"
-      return
-    end
 
     kevin = @actor_list[0]
     temp = actor
@@ -40,16 +35,17 @@ class BaconGraph
       temp.film_actor_hash.each { |film, actors|
         actors.sort_by(&:degree_to_bacon)
         if actors[0].degree_to_bacon < temp.degree_to_bacon
-          actor_path << temp.name.to_s + " was in "
-          actor_path << "'#{film.upcase}' with "
-          actor_path << actors[0].name.to_s
-          puts actor_path.join("").to_s
+          @film_list <<  film
           temp = actors[0]
-          actor_path = []
         end
       }
     end
-    puts "Degree to Bacon: " + actor.degree_to_bacon.to_s
+    
+    if @film_list.length > 6
+      p "#{actor.name} is not within 6 degrees of Bacon"
+    else
+      p @film_list
+    end
   end
   
   

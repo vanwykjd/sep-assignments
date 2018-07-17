@@ -17,7 +17,8 @@ RSpec.describe BaconGraph, type: Class do
   let (:jane_doe) { Node.new("Jane Doe") }
   let (:ricky_rick) { Node.new("Ricky Rick") }
   let (:bob_bobby) { Node.new("Bob Bobby") }
-
+  let (:picasso) { Node.new("Pablo Picasso") }
+  
   describe "Node#add_film(data)" do
     it "properly adds a new hash key and assigns data as key to a new array" do
       kevin.add_film("JFK")
@@ -77,25 +78,24 @@ RSpec.describe BaconGraph, type: Class do
     end
   end
   
-  describe "#set_degree_of_bacon" do
-    it "properly assigns nodes the degree of relation to Kevin Bacon" do
-      kevin.add_film("JFK")
-      asner.add_film("JFK")
-      asner.add_film("Change of Habit")
-      elvis.add_film("Change of Habit")
-      graph.add_actor(kevin)
-      graph.add_actor(elvis)
-      graph.add_actor(asner)
-      graph.set_degree_of_bacon
-      expect(kevin.degree_to_bacon).to eq 0
-      expect(asner.degree_to_bacon).to eq 1
-      expect(elvis.degree_to_bacon).to eq 2
-    end
-  end
-  
   describe "#find_kevin_bacon(data)" do
     specify {
-      expected_output = "Elvis Presley was in 'CHANGE OF HABIT' with Edward Asner\nEdward Asner was in 'JFK' with Kevin Bacon\nDegree to Bacon: 2\n"
+      expected_output = "[\"X-Men: Days of Future Past\", \"X-Men: First Class\"]\n"
+      kevin.add_film("X-Men: First Class")
+      mcavoy.add_film("X-Men: First Class")
+      mcavoy.add_film("X-Men: Days of Future Past")
+      fassbender.add_film("X-Men: First Class")
+      fassbender.add_film("X-Men: Days of Future Past")
+      mckellen.add_film("X-Men: Days of Future Past")  
+      graph.add_actor(kevin)
+      graph.add_actor(mcavoy)
+      graph.add_actor(fassbender)
+      graph.add_actor(mckellen)
+      expect { graph.find_kevin_bacon(mckellen) }.to output(expected_output).to_stdout
+    }
+    
+    specify {
+      expected_output =  "[\"Change of Habit\", \"JFK\"]\n"
       kevin.add_film("JFK")
       asner.add_film("JFK")
       asner.add_film("Change of Habit")
@@ -107,36 +107,77 @@ RSpec.describe BaconGraph, type: Class do
     }
     
     specify {
-      expected_output = "Bobby Troup was in 'BOP GIRL GOES CALYPSO' with Judy Tyler\nJudy Tyler was in 'JAILHOUSE ROCK' with Elvis Presley\nElvis Presley was in 'CHANGE OF HABIT' with Edward Asner\nEdward Asner was in 'JFK' with Kevin Bacon\nDegree to Bacon: 4\n"
+      expected_output = "[\"Bop Girl Goes Calypso\", \"Jailhouse Rock\", \"Change of Habit\", \"JFK\"]\n"
       kevin.add_film("JFK")
+      asner.add_film("JFK")
+      asner.add_film("Change of Habit")
       elvis.add_film("Change of Habit")
       elvis.add_film("Jailhouse Rock")
       judy_tyler.add_film("Jailhouse Rock")
       judy_tyler.add_film("Bop Girl Goes Calypso")
       bob_troup.add_film("Bop Girl Goes Calypso")
-      asner.add_film("Change of Habit")
+      graph.add_actor(kevin)
+      graph.add_actor(asner)
+      graph.add_actor(elvis)
+      graph.add_actor(judy_tyler)
+      graph.add_actor(bob_troup)
+      expect { graph.find_kevin_bacon(bob_troup) }.to output(expected_output).to_stdout
+    }
+  
+    
+    specify {
+      expected_output = "[\"Another Rando Movie\", \"Random Movie\", \"Bop Girl Goes Calypso\", \"Jailhouse Rock\", \"Change of Habit\", \"JFK\"]\n"
+      kevin.add_film("JFK")
       asner.add_film("JFK")
+      asner.add_film("Change of Habit")
+      elvis.add_film("Change of Habit")
+      elvis.add_film("Jailhouse Rock")
+      judy_tyler.add_film("Jailhouse Rock")
+      judy_tyler.add_film("Bop Girl Goes Calypso")
+      bob_troup.add_film("Bop Girl Goes Calypso")
+      bob_troup.add_film("Random Movie")
+      jane_doe.add_film("Random Movie")
+      jane_doe.add_film("Another Rando Movie")
+      ricky_rick.add_film("Another Rando Movie")
+      bob_bobby.add_film("Another Rando Movie")
       graph.add_actor(kevin)
       graph.add_actor(elvis)
       graph.add_actor(judy_tyler)
       graph.add_actor(bob_troup)
       graph.add_actor(asner)
-      expect { graph.find_kevin_bacon(bob_troup) }.to output(expected_output).to_stdout
+      graph.add_actor(jane_doe)
+      graph.add_actor(ricky_rick)
+      graph.add_actor(bob_bobby)
+      expect { graph.find_kevin_bacon(bob_bobby) }.to output(expected_output).to_stdout
     }
     
     specify {
-      expected_output = "Ian McKellen was in 'X-MEN: DAYS OF FUTURE PAST' with Michael Fassbender\nMichael Fassbender was in 'X-MEN: FIRST CLASS' with Kevin Bacon\nDegree to Bacon: 2\n"
-      kevin.add_film("X-Men: First Class")
-      mckellen.add_film("X-Men: Days of Future Past")
-      fassbender.add_film("X-Men: Days of Future Past")
-      fassbender.add_film("X-Men: First Class")
-      mcavoy.add_film("X-Men: Days of Future Past")
-      mcavoy.add_film("X-Men: First Class")
+      expected_output = "\"Pablo Picasso is not within 6 degrees of Bacon\"\n"
+      kevin.add_film("JFK")
+      asner.add_film("JFK")
+      asner.add_film("Change of Habit")
+      elvis.add_film("Change of Habit")
+      elvis.add_film("Jailhouse Rock")
+      judy_tyler.add_film("Jailhouse Rock")
+      judy_tyler.add_film("Bop Girl Goes Calypso")
+      bob_troup.add_film("Bop Girl Goes Calypso")
+      bob_troup.add_film("Random Movie")
+      jane_doe.add_film("Random Movie")
+      jane_doe.add_film("Another Rando Movie")
+      ricky_rick.add_film("Another Rando Movie")
+      bob_bobby.add_film("Another Rando Movie")
+      bob_bobby.add_film("Best Movie Ever")
+      picasso.add_film("Best Movie Ever")
       graph.add_actor(kevin)
-      graph.add_actor(mckellen)
-      graph.add_actor(fassbender)
-      graph.add_actor(mcavoy)
-      expect { graph.find_kevin_bacon(mckellen) }.to output(expected_output).to_stdout
+      graph.add_actor(elvis)
+      graph.add_actor(judy_tyler)
+      graph.add_actor(bob_troup)
+      graph.add_actor(asner)
+      graph.add_actor(jane_doe)
+      graph.add_actor(ricky_rick)
+      graph.add_actor(bob_bobby)
+      graph.add_actor(picasso)
+      expect { graph.find_kevin_bacon(picasso) }.to output(expected_output).to_stdout
     }
   end
   
