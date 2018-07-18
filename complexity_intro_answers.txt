@@ -1,0 +1,36 @@
+Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n).
+  O(1) is a like the amount of time it takes for a golfer to count the number of strokes after making a hole-in-one.
+  O(2^n) is a like the amount of time it takes for a golfer count the number of strokes after hitting the ball of bounds every other shot.
+
+In plain English, what is the best case scenario for binary search?
+  Because a binary search starts off by comparing the middle element of an array with the target value, there is a chance that the initial middle element could equal the target value, giving it a constant time, O(1), for its best case scenario.
+
+In plain English, what is the worst-case scenario for binary search?
+  By continually halving the potential range of elements a target value lies, the max amount of iterations for a binary search is only equal to the amount of times you are able to halve the initial number of elements, plus 1, giving it a worst-case scenario of logarithmic time, O(log n).
+
+In plain English, what is the bounded-case scenario for binary search?
+  The bounded-case scenario for a binary search is constrained by the upper-bound (worst-case scenario) and the lower bound (best-case scenario) for any number of elements given. This means that a binary searches run time for any number of elements will be no worse than O(log n) and at best O(1).
+
+Create a graph using the data below. Here's a CSV with the values you'll need.
+  >> csv_graph.png
+  
+What is the limit of the function above as n approaches infinity?
+	infinity
+  
+What is the Big-O of an algorithm that has the data points above?
+	2^n
+  
+Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
+  >> linear_search_runtime.rb
+  
+Create a graph from the output using Google Sheets or other graphing software. Analyze the graph and denote its Big-O somewhere on the graph.
+  >> linear_search_graph.png
+  
+What is the Big-O of binary search?
+  O(log n)
+  
+What is the Big-Ω of binary search?
+	O(1)
+  
+What is the Big-Ө of binary search?
+	O(log n)
