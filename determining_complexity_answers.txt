@@ -1,0 +1,39 @@
+1. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution. 
+    >> goodbye_world.rb
+    O(1) - The algorithm has a constant time complexity since no iteration is required.
+    #goodbye_world always takes the same amount of time to execute, regardless of the size of (n),
+    
+    
+2. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+    >> find_largest.rb
+    O(n) - The algorithm has a linear time complexity since it iterates over every item in the collection to find the largest value.
+    As the size of the collection increases, the number of operations to execute also grows at the same rate.
+    #find_largest always takes (n) operations for (n) items.
+    
+    
+3. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+    >> find_largest_2D_array.rb
+    O(n) - In the case performing a linear search over a 2D array, the algorithm not only needs to iterate over (n) number of items within the collection,
+    but it also needs to iterate over (m) number of items within each (n) item. A way to express this function would be: f(n) = n * m.
+    But since multiplicative constants don't affect how fast the function grows over time, we can drop the constant and express the function as f(n) = n.
+    Because of this, #find_largest for a 2D array has a linear time complexity.
+    
+    
+4. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+    >> numbers_recursive.rb
+    O(2^n) - The algorithm has an exponential time complexity due to its recursive behavior.
+    #numbers calls on itself twice (n) times, creating a recursion tree with a depth of (n).
+    
+    
+5. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+    >> numbers_iterative.rb
+    O(n) - The algorithm has a linear time complexity since it iterates (n-1) times.
+    As (n) increases, the number of operations to execute also grows at the same rate.
+    #iterative always takes (n-1) operations for any given (n).
+    
+    
+6. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+    >> sort.rb
+    O(n^2) - Although a quicksort algorithm is somewhat rare to have a worst-case scenario, it is possible for it to have a quadratic time complexity.
+    In that case that the partitions are as unbalanced as possible, the function takes the form of f(n) = c((n + 1)(n/2) -1), (c) being some constant. 
+    But since low-order terms and multiplicative constants don't affect how fast the function grows over time, we can drop them, leaving it as (n^2).
