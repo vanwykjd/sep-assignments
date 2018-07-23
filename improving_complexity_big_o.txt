@@ -1,0 +1,8 @@
+improving_complexity_version_one.rb
+  Using insertion sort, this algorithm has a time complexity of O(n^2)
+
+improving_complexity_version_two.rb
+  Using merge sort, this algorithm has a time complexity of O(n log(n))
+  
+improving_complexity_version_three.rb
+  Using a heap data structure, this method utilizes a heapsort algorithm, giving it a time complexity of O(n log(n))
